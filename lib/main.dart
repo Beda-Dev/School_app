@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import './views/form.dart';
 import 'utils/colors.dart';
+import './views/home_work.dart';
+import './views/calendar.dart';
 
 
 void main() {
@@ -25,7 +27,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: AppColors.blue800),
         useMaterial3: true,
       ),
-        home: const LoginForm(),
+        home: const Calendar(),
     );
   }
 }

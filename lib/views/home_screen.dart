@@ -1,10 +1,10 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import '../views/form.dart';
 import '../views/home_screen.dart';
 import '../utils/colors.dart';
 import '../widgets/custom_Container.dart';
 import 'course.dart';
+import 'home_work.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -56,6 +56,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                     color: AppColors.white,
                                     fontSize: 13,
                                   ),
+                                ),
+                                SizedBox(
+                                  width: 20,
                                 ),
 
                                 Icon(
@@ -136,9 +139,13 @@ class _HomeScreenState extends State<HomeScreen> {
                             ), // Utilise une icône
                             text: "Devoirs",
                             onTap: () {
-                              if (kDebugMode) {
-                                print("Devoirs cliqué !");
-                              }
+                              if (mounted) {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => const HomeWork()),
+                                );
+                              };
                             },
                           ),
                         ],

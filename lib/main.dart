@@ -3,7 +3,7 @@ import './views/form.dart';
 import 'utils/colors.dart';
 import './views/home_work.dart';
 import './views/calendar.dart';
-
+import './views/stats_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
       // initialRoute: '/',
       //  routes: {
       // '/': (context) => const LoginForm(),
-        //  '/Home' : (context) => const HomeScreen(),
+      //  '/Home' : (context) => const HomeScreen(),
       //  },
       debugShowCheckedModeBanner: false,
       title: 'School App',
@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: AppColors.blue800),
         useMaterial3: true,
       ),
-        home: const Calendar(),
+      home: const StatsScreen(),
     );
   }
 }

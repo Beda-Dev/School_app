@@ -1,10 +1,11 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import '../views/home_screen.dart';
 import '../utils/colors.dart';
 import '../widgets/custom_Container.dart';
 import 'course.dart';
 import 'home_work.dart';
+import 'calendar.dart';
+import 'stats_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -60,7 +61,6 @@ class _HomeScreenState extends State<HomeScreen> {
                                 SizedBox(
                                   width: 20,
                                 ),
-
                                 Icon(
                                   Icons.supervised_user_circle_outlined,
                                   size: 60,
@@ -123,11 +123,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => const Course_screen()),
+                                      builder: (context) =>
+                                          const Course_screen()),
                                 );
-                              };
-                              if (kDebugMode) {
-                                print("Cours cliqué !");
                               }
                             },
                           ),
@@ -145,7 +143,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                   MaterialPageRoute(
                                       builder: (context) => const HomeWork()),
                                 );
-                              };
+                              }
+                              ;
                             },
                           ),
                         ],
@@ -221,10 +220,14 @@ class _HomeScreenState extends State<HomeScreen> {
                               color: AppColors.blue800,
                               size: 50,
                             ), // Utilise une icône
-                            text: "Emploie du temps",
+                            text: "Emploi du temps",
                             onTap: () {
-                              if (kDebugMode) {
-                                print("Emploie du temps cliqué !");
+                              if (mounted) {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => CalendarScreen()),
+                                );
                               }
                             },
                           ),
@@ -236,8 +239,13 @@ class _HomeScreenState extends State<HomeScreen> {
                             ), // Utilise une icône
                             text: "Statistique",
                             onTap: () {
-                              if (kDebugMode) {
-                                print("Statistique cliqué !");
+                              if (mounted) {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          const StatsScreen()),
+                                );
                               }
                             },
                           ),
@@ -255,12 +263,13 @@ class _HomeScreenState extends State<HomeScreen> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         CustomContainer(
-                            icon: const Icon(Icons.supervised_user_circle_rounded , size: 50 ),
-                            textSize: 30,
-                            text: '80.37%',
+                          icon: const Icon(Icons.supervised_user_circle_rounded,
+                              size: 50),
+                          textSize: 30,
+                          text: '80.37%',
                           subText: "Attendance",
-                            onTap: () {} ,
-                            height: 170,
+                          onTap: () {},
+                          height: 170,
                           borderRadius: 20,
                           borderColor: AppColors.blue500,
                           borderWidth: 1,
@@ -268,7 +277,10 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                         const SizedBox(width: 8),
                         CustomContainer(
-                            icon: const Icon(Icons.school , size: 50,),
+                          icon: const Icon(
+                            Icons.school,
+                            size: 50,
+                          ),
                           textSize: 30,
                           text: '6047',
                           subText: "free due",
@@ -278,7 +290,6 @@ class _HomeScreenState extends State<HomeScreen> {
                           borderColor: AppColors.blue500,
                           borderWidth: 1,
                           backgroundColor: Colors.white,
-
                         )
                       ],
                     ))

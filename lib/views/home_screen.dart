@@ -226,7 +226,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => CalendarScreen()),
+                                      builder: (context) => const CalendarScreen()),
                                 );
                               }
                             },
@@ -237,7 +237,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               color: AppColors.blue800,
                               size: 50,
                             ), // Utilise une icône
-                            text: "Statistique",
+                            text: "Statistiques",
                             onTap: () {
                               if (mounted) {
                                 Navigator.push(

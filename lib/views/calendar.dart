@@ -1,5 +1,8 @@
+import 'package:e_commerce/utils/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:calendar_view/calendar_view.dart';
+
+DateTime get _now => DateTime.now();
 
 class CalendarScreen extends StatefulWidget {
   const CalendarScreen({super.key});
@@ -12,14 +15,14 @@ class _CalendarScreenState extends State<CalendarScreen> {
   final List<CalendarEventData> cours = [
     CalendarEventData(
       title: "Mathématiques",
-      date: DateTime(2025, 1, 16, 8, 0),
-      endDate: DateTime(2025, 1, 16, 10, 0),
+      date: DateTime(_now.year, _now.month, _now.day, 13, 30),
+      endDate: DateTime(_now.year, _now.month, _now.day, 18, 00),
       color: const Color(0xFFE8F5E9),
     ),
     CalendarEventData(
-      title: "Programmation Flutter",
-      date: DateTime(2025, 1, 16, 10, 0),
-      endDate: DateTime(2025, 1, 16, 12, 0),
+      title: "Programmation",
+      date: DateTime(_now.year, _now.month, _now.day, 09, 30),
+      endDate: DateTime(_now.year, _now.month, _now.day, 13, 30),
       color: const Color(0xFFFCE4EC),
     ),
     CalendarEventData(
@@ -51,16 +54,19 @@ class _CalendarScreenState extends State<CalendarScreen> {
     _controller = EventController()..addAll(cours);
   }
 
-  String vueActuelle = "Mois"; // Gérer la vue sélectionnée
+  String vueActuelle = "Mois";
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: const Text('Calendrier des Cours'),
+        title: const Text(
+          'Calendrier des Cours',
+          style: TextStyle(color: Colors.white),
+        ),
         centerTitle: true,
-        backgroundColor: Colors.blue,
+        backgroundColor: AppColors.blue800,
       ),
       body: SafeArea(
         child: Column(

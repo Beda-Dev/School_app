@@ -44,7 +44,7 @@ class _LoginFormState extends State<LoginForm> {
                       const Align(
                         alignment: Alignment.centerLeft,
                         child: Text(
-                          "Bonjour Etudiant",
+                          "Bonjour !",
                           style: TextStyle(
                             color: AppColors.white,
                             fontSize: 30,
@@ -134,7 +134,8 @@ class _LoginFormState extends State<LoginForm> {
                               MaterialPageRoute(
                                   builder: (context) => const HomeScreen()),
                             );
-                          };
+                          }
+                          ;
                           if (_formKey.currentState!.validate()) {
                             // Process login
                           }
@@ -161,9 +162,7 @@ class _LoginFormState extends State<LoginForm> {
                     ),
                     const SizedBox(height: 90),
                     TextButton(
-                      onPressed: () {
-
-                      },
+                      onPressed: () {},
                       child: const Text("Créer un compte ? s'inscrire"),
                     ),
                   ],

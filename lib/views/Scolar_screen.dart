@@ -20,51 +20,46 @@ class _ScolarScreenState extends State<ScolarScreen> {
       height: 200,
     );
 
-    double hauteurEcran = MediaQuery
-        .of(context)
-        .size
-        .height;
-    double largeurEcran = MediaQuery
-        .of(context)
-        .size
-        .width;
+    double hauteurEcran = MediaQuery.of(context).size.height;
+    double largeurEcran = MediaQuery.of(context).size.width;
     return Scaffold(
-      backgroundColor: AppColors.white,
+        backgroundColor: AppColors.blue800,
         appBar: AppBar(
-          backgroundColor: AppColors.blue800,
+          backgroundColor: Colors.transparent,
           centerTitle: true,
-          title: const Text("Scolarité" , style: TextStyle(
-            color: Colors.white
-          ),),
+          title: const Text(
+            "Information sur le participant",
+            style: TextStyle(
+              color: Colors.white,
+            ),
+          ),
         ),
         body: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Column(
+          child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Container(
-                    margin: const EdgeInsets.only(
-                      bottom: 12,top: 20
-
-                    ),
-                    padding: const EdgeInsets.all(7),
-                    decoration: BoxDecoration(
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black.withOpacity(0.3), // Couleur de l'ombre
-                          blurRadius: 10, // Rayon de flou de l'ombre
-                          offset: const Offset(0, 5), // Position de l'ombre (0 = pas de décalage horizontal, 5 = décalage vertical)
-                          spreadRadius: 1, // Étendue de l'ombre
-                        ),
-                      ],
-                      gradient: AppColors.greenGradient,
-                      borderRadius: const BorderRadius.all(
-                        Radius.circular(20),
+              children: [
+                Container(
+                  margin: const EdgeInsets.all(8),
+                  padding: const EdgeInsets.all(7),
+                  decoration: BoxDecoration(
+                    boxShadow: [
+                      BoxShadow(
+                        color:
+                            Colors.black.withOpacity(0.3), // Couleur de l'ombre
+                        blurRadius: 10, // Rayon de flou de l'ombre
+                        offset: const Offset(0,
+                            5), // Position de l'ombre (0 = pas de décalage horizontal, 5 = décalage vertical)
+                        spreadRadius: 1, // Étendue de l'ombre
                       ),
+                    ],
+                    gradient: AppColors.greenGradient,
+                    borderRadius: const BorderRadius.all(
+                      Radius.circular(20),
                     ),
-                    width: hauteurEcran,
-                    height: largeurEcran / 2,
+                  ),
+                  width: hauteurEcran,
+                  height: (largeurEcran / 2),
+                  child: SingleChildScrollView(
                     child: Column(
                       children: [
                         const Row(
@@ -93,10 +88,6 @@ class _ScolarScreenState extends State<ScolarScreen> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Text("Carte Etudiant",
-                                    style: TextStyle(
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.bold)),
                                 SizedBox(
                                   height: 12,
                                 ),
@@ -148,8 +139,7 @@ class _ScolarScreenState extends State<ScolarScreen> {
                                 Image.asset("assets/images/CI.jpg"),
                                 const SizedBox(
                                   height: 20,
-                                )
-                                ,
+                                ),
                                 SizedBox(
                                     width: 80,
                                     height: 80,
@@ -161,86 +151,81 @@ class _ScolarScreenState extends State<ScolarScreen> {
                             ),
                           ],
                         ),
-
                       ],
                     ),
                   ),
-                  const Text("Tableau des Modalités de Paiement" , style: TextStyle(
-                    fontWeight: FontWeight.bold
-                  ),),
-                  const SizedBox(
-                      height: 8,
-                  ),
-                  Table(
-                    border: TableBorder.all(
-                      color: Colors.black, // Couleur des bordures du tableau
-                      width: 2, // Largeur des bordures
+                ),
+                const SizedBox(
+                  height: 8,
+                ),
+                Container(
+                  padding: const EdgeInsets.all(20),
+                  decoration: const BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(20),
+                      topRight: Radius.circular(20),
                     ),
-                    children: const [
-                      TableRow(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Text("Mode de Paiement",
-                                style: TextStyle(fontWeight: FontWeight.bold , fontSize: 11)),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Text("Montant", style: TextStyle(fontWeight: FontWeight.bold)),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Text("Date", style: TextStyle(fontWeight: FontWeight.bold)),
-                          ),
-                        ],
-                      ),
-                      TableRow(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Text("Virement Bancaire" , style: TextStyle(
-                                fontSize: 11
-                            ),),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Text("5 000 000 FCFA" , style: TextStyle(
-                                fontSize: 11
-                            ),),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Text("31/03/2024"),
-                          ),
-                        ]
-                      ),
-                      TableRow(
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Text("Virement Bancaire" , style: TextStyle(
-                                fontSize: 11
-                              ),),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Text("1 000 000 FCFA" ,  style: TextStyle(
-                                  fontSize: 11
-                              ),),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Text("12/01/2025"),
-                            ),
-                          ]
-                      )
-
-                    ],
-                  )
-                ]
-            ),
-          ),
-        )
-    );
+                  ),
+                  width: largeurEcran,
+                  height: 9 * (hauteurEcran / 10),
+                  child: SingleChildScrollView(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        _buildCardRow("Entreprise :", "Societe Generale"),
+                        _buildCardRow("Fonction :", "Gestionnaire de compte"),
+                        _buildCardRow(
+                            "Ancienneté dans la fonction :", "10 ans"),
+                        _buildCardRow("Nombre d'employés :", "5"),
+                        _buildCardRow(
+                            "Nombre d'employés dans l'entreprise :", "34"),
+                        _buildCardRow("Cellulaire :", "+225 22 89 65 45 23"),
+                        _buildCardRow("Téléphone :", "+225 07 89 65 45 23"),
+                        _buildCardRow("Email :", "kouassi@gmail.com"),
+                      ],
+                    ),
+                  ),
+                )
+              ]),
+        ));
   }
+}
+
+Widget _buildCardRow(String label, String value) {
+  return Padding(
+    padding: const EdgeInsets.symmetric(vertical: 8.0),
+    child: Card(
+      elevation: 0,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Row(
+          children: [
+            Text(
+              label,
+              style: const TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+                color: AppColors.gray500,
+              ),
+            ),
+            const SizedBox(width: 10),
+            Expanded(
+              child: Text(
+                value,
+                style: const TextStyle(
+                  fontSize: 16,
+                  color: AppColors.gray800,
+                ),
+                overflow: TextOverflow.ellipsis,
+              ),
+            ),
+          ],
+        ),
+      ),
+    ),
+  );
 }

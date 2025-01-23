@@ -1,7 +1,10 @@
+import 'package:e_commerce/models/course_model.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import '../utils/colors.dart';
+//import '../utils/courses_items.dart';
 import '../widgets/Centered_Text_Container.dart';
+import 'home_work.dart';
 
 class Course_screen extends StatefulWidget {
   const Course_screen({super.key});
@@ -11,6 +14,69 @@ class Course_screen extends StatefulWidget {
 }
 
 class _Course_screenState extends State<Course_screen> {
+  List<Course> marketingConcurrentiel = [
+    Course(
+        day: '10',
+        month: 'Janvier',
+        subject: 'Marketing Concurrentiel',
+        weekDay: 'Lundi',
+        time: '09:00 - 11:00'),
+    Course(
+        day: '17',
+        month: 'Janvier',
+        subject: 'Marketing Concurrentiel',
+        weekDay: 'Mardi',
+        time: '10:00 - 12:00'),
+    Course(
+        day: '29',
+        month: 'Janvier',
+        subject: 'Marketing Concurrentiel',
+        weekDay: 'Mercredi',
+        time: '14:00 - 16:00'),
+    Course(
+        day: '30',
+        month: 'Janvier',
+        subject: 'Marketing Concurrentiel',
+        weekDay: 'Jeudi',
+        time: '08:00 - 10:00'),
+    Course(
+        day: '31',
+        month: 'Janvier',
+        subject: 'Marketing Concurrentiel',
+        weekDay: 'Vendredi',
+        time: '11:00 - 13:00'),
+    Course(
+        day: '3',
+        month: 'Février',
+        subject: 'Marketing Concurrentiel',
+        weekDay: 'Lundi',
+        time: '13:00 - 15:00'),
+    Course(
+        day: '10',
+        month: 'Février',
+        subject: 'Marketing Concurrentiel',
+        weekDay: 'Mardi',
+        time: '09:00 - 11:00'),
+    Course(
+        day: '12',
+        month: 'Février',
+        subject: 'Marketing Concurrentiel',
+        weekDay: 'Mercredi',
+        time: '16:00 - 18:00'),
+    Course(
+        day: '15',
+        month: 'Février',
+        subject: 'Marketing Concurrentiel',
+        weekDay: 'Jeudi',
+        time: '12:00 - 14:00'),
+    Course(
+        day: '26',
+        month: 'Février',
+        subject: 'Marketing Concurrentiel',
+        weekDay: 'Vendredi',
+        time: '08:00 - 10:00'),
+  ];
+
   @override
   Widget build(BuildContext context) {
     double hauteurEcran = MediaQuery.of(context).size.height;
@@ -19,9 +85,12 @@ class _Course_screenState extends State<Course_screen> {
       backgroundColor: AppColors.blue800,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
-        title: const Text("Cours" , style: TextStyle(
-          color: Colors.white ,
-        ),),
+        title: const Text(
+          "Cours",
+          style: TextStyle(
+            color: Colors.white,
+          ),
+        ),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -40,7 +109,7 @@ class _Course_screenState extends State<Course_screen> {
                 ),
               ),
               width: largeurEcran,
-              height: 9*(hauteurEcran / 10),
+              height: 9 * (hauteurEcran / 10),
               child: SingleChildScrollView(
                 child: Column(
                   children: [
@@ -48,44 +117,50 @@ class _Course_screenState extends State<Course_screen> {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         CenteredTextContainer(
-                          text: "Electrotechnique",
+                          text: "Marketing concurentiel",
+                          textSize: 15,
+                          onTap: () {
+                            if (mounted) {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      HomeWork(courses: marketingConcurrentiel),
+                                ),
+                              );
+                            }
+                          },
+                        ),
+                        CenteredTextContainer(
+                          // Utilise une icône
+                          text: "Marketing strategique",
                           textSize: 15,
                           onTap: () {
                             if (kDebugMode) {
-                              print("Electrotechnique cliqué !");
+                              print("Marketing strategique cliqué !");
                             }
                           },
                         ),
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
                         CenteredTextContainer(
-                        // Utilise une icône
-                          text: "Electronique",
+                          text: "Negociation",
                           textSize: 15,
                           onTap: () {
                             if (kDebugMode) {
-                              print("Electronique cliqué !");
+                              print("Negociation cliqué !");
                             }
                           },
                         ),
-                      ],
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
                         CenteredTextContainer(
-                          text: "Developpement web",
+                          text: "Comptabilite",
                           textSize: 15,
                           onTap: () {
                             if (kDebugMode) {
-                              print("Developpement web");
-                            }
-                          },
-                        ),
-                        CenteredTextContainer(
-                          text: "Anglais",
-                          textSize: 20,
-                          onTap: () {
-                            if (kDebugMode) {
-                              print("Anglais cliqué !");
+                              print("Comptabilité cliqué !");
                             }
                           },
                         ),
@@ -95,20 +170,20 @@ class _Course_screenState extends State<Course_screen> {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         CenteredTextContainer(
-                         // Utilise une icône
-                          text: "Mathematique Appliquer",
+                          // Utilise une icône
+                          text: "Ethique d'entreprise",
                           onTap: () {
                             if (kDebugMode) {
-                              print("Mathematique  cliqué !");
+                              print("Ethique d'entreprise  cliqué !");
                             }
                           },
                         ),
                         CenteredTextContainer(
-                          text: "Droit",
-                          textSize: 20,
+                          text: "Leadership",
+                          textSize: 15,
                           onTap: () {
                             if (kDebugMode) {
-                              print(" Droit cliqué !");
+                              print("Leadership cliqué !");
                             }
                           },
                         ),
@@ -117,19 +192,21 @@ class _Course_screenState extends State<Course_screen> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        CenteredTextContainer(// Utilise une icône
-                          text: "Informatque",
+                        CenteredTextContainer(
+                          // Utilise une icône
+                          text: "Economie",
                           onTap: () {
                             if (kDebugMode) {
-                              print("Informatque cliqué !");
+                              print("Economie cliqué !");
                             }
                           },
                         ),
-                        CenteredTextContainer(// Utilise une icône
-                          text: "Redaction Memoire",
+                        CenteredTextContainer(
+                          // Utilise une icône
+                          text: "Etrepreneuriat",
                           onTap: () {
                             if (kDebugMode) {
-                              print("Redaction Memoire cliqué !");
+                              print("Etrepreneuriat cliqué !");
                             }
                           },
                         ),
@@ -138,20 +215,22 @@ class _Course_screenState extends State<Course_screen> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        CenteredTextContainer(// Utilise une icône
-                          text: "Autres",
+                        CenteredTextContainer(
+                          // Utilise une icône
+                          text: "Travail et famille",
                           onTap: () {
                             if (kDebugMode) {
-                              print("Autre cliqué !");
+                              print("Travail et famille cliqué !");
                             }
                           },
                         ),
-                        CenteredTextContainer(// Utilise une icône
-                          text: "+",
-                          textSize: 50,
+                        CenteredTextContainer(
+                          // Utilise une icône
+                          text: "Transformation digitale",
+                          textSize: 15,
                           onTap: () {
                             if (kDebugMode) {
-                              print("Redaction Memoire cliqué !");
+                              print("Transformation digitale cliqué !");
                             }
                           },
                         ),

@@ -2,7 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import '../utils/colors.dart';
 import '../widgets/custom_Container.dart';
-import 'course.dart';
+import 'course_screen.dart';
 import 'home_work.dart';
 import 'calendar.dart';
 import 'stats_screen.dart';
@@ -35,7 +35,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     const Align(
                       alignment: Alignment.topLeft,
                       child: Text(
-                        "Bonjour Beda",
+                        "Bonjour Monsieur Kouassi",
                         style: TextStyle(
                           color: AppColors.white,
                           fontSize: 25,
@@ -53,19 +53,12 @@ class _HomeScreenState extends State<HomeScreen> {
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 Text(
-                                  "Licence 3 Genie Electrique | cours du soir",
+                                  "Participant PLD | groupe 2",
                                   style: TextStyle(
                                     color: AppColors.white,
                                     fontSize: 13,
                                   ),
                                 ),
-                                SizedBox(
-                                  width: 20,
-                                ),
-                                Icon(
-                                  Icons.supervised_user_circle_outlined,
-                                  size: 60,
-                                )
                               ],
                             ),
                           ),
@@ -132,50 +125,19 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                           CustomContainer(
                             icon: const Icon(
-                              Icons.assignment,
+                              Icons.date_range_outlined,
                               color: AppColors.blue800,
                               size: 50,
                             ), // Utilise une icône
-                            text: "Devoirs",
+                            text: "Emploi du temps",
                             onTap: () {
                               if (mounted) {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => const HomeWork()),
+                                      builder: (context) =>
+                                          const CalendarScreen()),
                                 );
-                              }
-                              ;
-                            },
-                          ),
-                        ],
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          CustomContainer(
-                            icon: const Icon(
-                              Icons.grade,
-                              color: AppColors.blue800,
-                              size: 50,
-                            ), // Utilise une icône
-                            text: "Appréciation",
-                            onTap: () {
-                              if (kDebugMode) {
-                                print("Appreciation cliqué !");
-                              }
-                            },
-                          ),
-                          CustomContainer(
-                            icon: const Icon(
-                              Icons.book,
-                              color: AppColors.blue800,
-                              size: 50,
-                            ), // Utilise une icône
-                            text: "Bibliothèque",
-                            onTap: () {
-                              if (kDebugMode) {
-                                print("Bibliothèque cliqué !");
                               }
                             },
                           ),
@@ -190,26 +152,27 @@ class _HomeScreenState extends State<HomeScreen> {
                               color: AppColors.blue800,
                               size: 50,
                             ), // Utilise une icône
-                            text: "Scolarité",
+                            text: "Graduation",
                             onTap: () {
-                              if(mounted){
-                                Navigator.push(
-                                  context ,
-                                  MaterialPageRoute(builder: (context)=> const ScolarScreen())
-                                );
+                              if (kDebugMode) {
+                                print("Graduation cliqué !");
                               }
                             },
                           ),
                           CustomContainer(
                             icon: const Icon(
-                              Icons.people,
+                              Icons.account_circle,
                               color: AppColors.blue800,
                               size: 50,
                             ), // Utilise une icône
-                            text: "classe",
+                            text: "Participant",
                             onTap: () {
-                              if (kDebugMode) {
-                                print(" class cliqué !");
+                              if (mounted) {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            const ScolarScreen()));
                               }
                             },
                           ),
@@ -218,23 +181,6 @@ class _HomeScreenState extends State<HomeScreen> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          CustomContainer(
-                            icon: const Icon(
-                              Icons.date_range_outlined,
-                              color: AppColors.blue800,
-                              size: 50,
-                            ), // Utilise une icône
-                            text: "Emploi du temps",
-                            onTap: () {
-                              if (mounted) {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => const CalendarScreen()),
-                                );
-                              }
-                            },
-                          ),
                           CustomContainer(
                             icon: const Icon(
                               Icons.add_chart,
@@ -253,7 +199,24 @@ class _HomeScreenState extends State<HomeScreen> {
                               }
                             },
                           ),
+                          CustomContainer(
+                            icon: const Icon(
+                              Icons.people,
+                              color: AppColors.blue800,
+                              size: 50,
+                            ), // Utilise une icône
+                            text: "Corps enseignant",
+                            onTap: () {
+                              if (kDebugMode) {
+                                print("Corps enseignant cliqué !");
+                              }
+                            },
+                          ),
                         ],
+                      ),
+                      const Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [],
                       ),
                     ],
                   ),
@@ -267,11 +230,10 @@ class _HomeScreenState extends State<HomeScreen> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         CustomContainer(
-                          icon: const Icon(Icons.supervised_user_circle_rounded,
-                              size: 50),
-                          textSize: 30,
-                          text: '80.37%',
-                          subText: "Attendance",
+                          icon: const Icon(Icons.book, size: 50),
+                          textSize: 12,
+                          text: 'Program for Leadership Development',
+                          subText: "PLD groupe 2",
                           onTap: () {},
                           height: 170,
                           borderRadius: 20,
@@ -282,12 +244,12 @@ class _HomeScreenState extends State<HomeScreen> {
                         const SizedBox(width: 8),
                         CustomContainer(
                           icon: const Icon(
-                            Icons.school,
+                            Icons.check_circle,
                             size: 50,
                           ),
                           textSize: 30,
-                          text: '6047',
-                          subText: "free due",
+                          text: '70%',
+                          subText: "taux d'assiduité au session",
                           onTap: () {},
                           height: 170,
                           borderRadius: 20,

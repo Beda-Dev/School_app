@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: AppColors.blue800),
         useMaterial3: true,
       ),
-      home: const LoginForm(),
+      home: const HomeScreen(),
     );
   }
 }

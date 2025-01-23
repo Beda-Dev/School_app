@@ -88,7 +88,7 @@ class AppColors {
     end: Alignment.bottomRight,
   );
 
-  static const Gradient greenGradient = LinearGradient(
+  static  Gradient greenGradient = const LinearGradient(
     colors: [AppColors.green400, AppColors.green600],
     begin: Alignment.topLeft,
     end: Alignment.bottomRight,

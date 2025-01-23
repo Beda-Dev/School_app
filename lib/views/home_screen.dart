@@ -6,6 +6,7 @@ import 'course.dart';
 import 'home_work.dart';
 import 'calendar.dart';
 import 'stats_screen.dart';
+import 'Scolar_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -158,10 +159,10 @@ class _HomeScreenState extends State<HomeScreen> {
                               color: AppColors.blue800,
                               size: 50,
                             ), // Utilise une icône
-                            text: "Notes trimestrielle",
+                            text: "Appréciation",
                             onTap: () {
                               if (kDebugMode) {
-                                print("note cliqué !");
+                                print("Appreciation cliqué !");
                               }
                             },
                           ),
@@ -191,8 +192,11 @@ class _HomeScreenState extends State<HomeScreen> {
                             ), // Utilise une icône
                             text: "Scolarité",
                             onTap: () {
-                              if (kDebugMode) {
-                                print("Scolarié cliqué !");
+                              if(mounted){
+                                Navigator.push(
+                                  context ,
+                                  MaterialPageRoute(builder: (context)=> const ScolarScreen())
+                                );
                               }
                             },
                           ),

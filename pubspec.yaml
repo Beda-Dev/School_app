@@ -32,6 +32,8 @@ dependencies:
     sdk: flutter
   calendar_view: ^1.4.0
   fl_chart: ^0.70.2
+  barcode: ^2.1.2
+  flutter_svg: ^2.0.5
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -64,6 +66,10 @@ flutter:
   assets:
      - assets/images/dall.png
      - assets/images/dall1.png
+     - assets/images/profile.png
+     - assets/images/mde.png
+     - assets/images/mde1.png
+     - assets/images/CI.jpg
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

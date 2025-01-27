@@ -7,6 +7,8 @@ import 'home_work.dart';
 import 'calendar.dart';
 import 'stats_screen.dart';
 import 'Scolar_screen.dart';
+import 'teacher_screen.dart';
+import 'graduation_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -154,8 +156,12 @@ class _HomeScreenState extends State<HomeScreen> {
                             ), // Utilise une icône
                             text: "Graduation",
                             onTap: () {
-                              if (kDebugMode) {
-                                print("Graduation cliqué !");
+                              if (mounted) {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => CertificatPage()),
+                                );
                               }
                             },
                           ),
@@ -207,8 +213,13 @@ class _HomeScreenState extends State<HomeScreen> {
                             ), // Utilise une icône
                             text: "Corps enseignant",
                             onTap: () {
-                              if (kDebugMode) {
-                                print("Corps enseignant cliqué !");
+                              if (mounted) {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          const TeacherScreen()),
+                                );
                               }
                             },
                           ),

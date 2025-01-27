@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:grouped_list/grouped_list.dart';
 import '../utils/colors.dart';
 import '../widgets/Home_Work_Item.dart';
 import '../models/course_model.dart';
 
 class HomeWork extends StatefulWidget {
-  final List<Course> courses; // Liste de cours passée en paramètre
+  final List<Course> courses;
 
-  const HomeWork(
-      {super.key,
-      required this.courses}); // Constructeur acceptant la liste de cours
+  const HomeWork({super.key, required this.courses});
 
   @override
   State<HomeWork> createState() => _HomeWorkState();
@@ -31,14 +30,15 @@ class _HomeWorkState extends State<HomeWork> {
           ),
         ),
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            SizedBox(
-              width: largeurEcran,
-              height: (hauteurEcran / 10),
-            ),
-            Container(
+      body: Column(
+        children: [
+          SizedBox(
+            width: largeurEcran,
+            height: (hauteurEcran / 10),
+          ),
+          Expanded(
+            child: Container(
+              padding: const EdgeInsets.all(20),
               decoration: const BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.only(
@@ -46,27 +46,37 @@ class _HomeWorkState extends State<HomeWork> {
                   topRight: Radius.circular(20),
                 ),
               ),
-              width: largeurEcran,
-              height: 9 * (hauteurEcran / 10),
-              child: SingleChildScrollView(
-                child: Column(
-                  children: widget.courses.map((course) {
-                    return SingleChildScrollView(
-                      child: HomeWorkItem(
-                        day: course.day,
-                        month: course.month,
-                        subject: course.subject,
-                        weekDay: course.weekDay,
-                        time: course.time,
-                        showButton: course.showButton,
-                      ),
-                    );
-                  }).toList(),
+              child: GroupedListView<Course, String>(
+                elements: widget.courses,
+                groupBy: (course) => course.month, // Groupe par mois
+                groupSeparatorBuilder: (String groupValue) => Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    groupValue,
+                    style: const TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.blue,
+                    ),
+                  ),
                 ),
+                itemBuilder: (context, Course course) {
+                  return HomeWorkItem(
+                    day: course.day,
+                    month: course.month,
+                    subject: course.subject,
+                    weekDay: course.weekDay,
+                    time: course.time,
+                    showButton: course.showButton,
+                  );
+                },
+                itemComparator: (item1, item2) =>
+                    item1.time.compareTo(item2.time),
+                order: GroupedListOrder.ASC, // Tri ascendant
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

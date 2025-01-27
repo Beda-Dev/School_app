@@ -39,115 +39,102 @@ class _ScolarScreenState extends State<ScolarScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Container(
-                  margin: const EdgeInsets.all(8),
-                  padding: const EdgeInsets.all(7),
+                  margin: const EdgeInsets.all(
+                      16), // Marges plus larges pour un meilleur espacement
+                  padding: const EdgeInsets.all(16), // Padding plus généreux
                   decoration: BoxDecoration(
                     boxShadow: [
                       BoxShadow(
                         color:
-                            Colors.black.withOpacity(0.3), // Couleur de l'ombre
-                        blurRadius: 10, // Rayon de flou de l'ombre
-                        offset: const Offset(0,
-                            5), // Position de l'ombre (0 = pas de décalage horizontal, 5 = décalage vertical)
+                            Colors.black.withOpacity(0.2), // Ombre plus subtile
+                        blurRadius: 10, // Rayon de flou
+                        offset: const Offset(0, 5), // Position de l'ombre
                         spreadRadius: 1, // Étendue de l'ombre
                       ),
                     ],
-                    gradient: AppColors.greenGradient,
+                    gradient: AppColors.greenGradient, // Dégradé de couleur
                     borderRadius: const BorderRadius.all(
-                      Radius.circular(20),
-                    ),
+                        Radius.circular(20)), // Bordure arrondie
                   ),
-                  width: hauteurEcran,
-                  height: (largeurEcran / 2),
+                  width: double.infinity, // Utilise toute la largeur disponible
+                  height: MediaQuery.of(context).size.height /
+                      2.5, // Ajuste la hauteur selon l'écran
                   child: SingleChildScrollView(
                     child: Column(
                       children: [
+                        // En-tête
                         const Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
-                              "Republique de Cote d'Ivoire",
-                              style: TextStyle(fontWeight: FontWeight.bold),
-                            )
+                              "République de Côte d'Ivoire",
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 16,
+                                color: Colors.white,
+                              ),
+                            ),
                           ],
                         ),
+                        const SizedBox(
+                            height:
+                                12), // Un peu d'espacement entre le titre et les éléments suivants
                         Row(
                           children: [
-                            Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Image.asset("assets/images/mde1.png"),
-                                Container(
-                                    margin: const EdgeInsets.symmetric(
-                                        horizontal: 5),
-                                    child: Image.asset(
-                                        "assets/images/profile.png")),
-                              ],
+                            // Colonne de gauche avec les images
+                            Expanded(
+                              flex: 1,
+                              child: Column(
+                                children: [
+                                  Image.asset("assets/images/mde1.png",
+                                      height:
+                                          60), // Taille d'image plus raisonnable
+                                  const SizedBox(height: 8),
+                                  Image.asset("assets/images/profile.png",
+                                      height: 100), // Taille d'image ajustée
+                                ],
+                              ),
                             ),
-                            const Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                SizedBox(
-                                  height: 12,
-                                ),
-                                Text(
-                                  "Numero d'identification",
-                                  style: TextStyle(fontSize: 9),
-                                ),
-                                Text(
-                                  "59835637228352",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 10),
-                                ),
-                                Text(
-                                  "Nom",
-                                  style: TextStyle(fontSize: 10),
-                                ),
-                                Text(
-                                  "Kouassi",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 10),
-                                ),
-                                Text(
-                                  "Prenom",
-                                  style: TextStyle(fontSize: 10),
-                                ),
-                                Text(
-                                  "Alexandre",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 11),
-                                ),
-                                Text(
-                                  "Date d'inscription",
-                                  style: TextStyle(fontSize: 10),
-                                ),
-                                Text(
-                                  "12/01/2025",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 10),
-                                ),
-                              ],
+                            const SizedBox(
+                                width: 16), // Espacement entre les colonnes
+                            // Colonne de droite avec les informations textuelles
+                            const Expanded(
+                              flex: 2,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  _IdentityText(
+                                      label: "Numéro d'identification",
+                                      value: "59835637228352"),
+                                  _IdentityText(label: "Nom", value: "Kouassi"),
+                                  _IdentityText(
+                                      label: "Prénom", value: "Alexandre"),
+                                  _IdentityText(
+                                      label: "Date d'inscription",
+                                      value: "12/01/2025"),
+                                ],
+                              ),
                             ),
-                            const Spacer(),
-                            Column(
-                              children: <Widget>[
-                                Image.asset("assets/images/CI.jpg"),
-                                const SizedBox(
-                                  height: 20,
-                                ),
-                                SizedBox(
+                            const SizedBox(
+                                width: 16), // Espacement entre les colonnes
+                            // Colonne de droite avec l'image du pays et un autre logo
+                            Expanded(
+                              flex: 1,
+                              child: Column(
+                                children: [
+                                  Image.asset("assets/images/CI.jpg",
+                                      height: 60), // Taille d'image ajustée
+                                  const SizedBox(height: 20),
+                                  SizedBox(
                                     width: 80,
                                     height: 80,
                                     child: SvgPicture.string(
                                       svg,
                                       fit: BoxFit.contain,
-                                    )),
-                              ],
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
                           ],
                         ),
@@ -177,9 +164,8 @@ class _ScolarScreenState extends State<ScolarScreen> {
                         _buildCardRow("Fonction :", "Gestionnaire de compte"),
                         _buildCardRow(
                             "Ancienneté dans la fonction :", "10 ans"),
-                        _buildCardRow("Nombre d'employés :", "5"),
-                        _buildCardRow(
-                            "Nombre d'employés dans l'entreprise :", "34"),
+                        _buildCardRow("Nombre d'employés a charge :", "5"),
+                        _buildCardRow("Effectif de l'entreprise :", "34"),
                         _buildCardRow("Cellulaire :", "+225 22 89 65 45 23"),
                         _buildCardRow("Téléphone :", "+225 07 89 65 45 23"),
                         _buildCardRow("Email :", "kouassi@gmail.com"),
@@ -228,4 +214,40 @@ Widget _buildCardRow(String label, String value) {
       ),
     ),
   );
+}
+
+class _IdentityText extends StatelessWidget {
+  final String label;
+  final String value;
+
+  const _IdentityText({
+    Key? key,
+    required this.label,
+    required this.value,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          label,
+          style: const TextStyle(
+            fontSize: 12,
+            color: Colors.white,
+          ),
+        ),
+        Text(
+          value,
+          style: const TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 14,
+            color: Colors.white,
+          ),
+        ),
+        const SizedBox(height: 8), // Espacement entre les lignes
+      ],
+    );
+  }
 }

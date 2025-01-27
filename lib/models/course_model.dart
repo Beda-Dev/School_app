@@ -1,6 +1,7 @@
 
+
 class Course {
-  final String day;
+  final int day;
   final String month;
   final String subject;
   final String weekDay;

@@ -2,7 +2,7 @@ import 'package:e_commerce/models/course_model.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import '../utils/colors.dart';
-//import '../utils/courses_items.dart';
+import '../utils/courses_items.dart';
 import '../widgets/Centered_Text_Container.dart';
 import 'home_work.dart';
 
@@ -14,69 +14,6 @@ class Course_screen extends StatefulWidget {
 }
 
 class _Course_screenState extends State<Course_screen> {
-  List<Course> marketingConcurrentiel = [
-    Course(
-        day: '10',
-        month: 'Janvier',
-        subject: 'Marketing Concurrentiel',
-        weekDay: 'Lundi',
-        time: '09:00 - 11:00'),
-    Course(
-        day: '17',
-        month: 'Janvier',
-        subject: 'Marketing Concurrentiel',
-        weekDay: 'Mardi',
-        time: '10:00 - 12:00'),
-    Course(
-        day: '29',
-        month: 'Janvier',
-        subject: 'Marketing Concurrentiel',
-        weekDay: 'Mercredi',
-        time: '14:00 - 16:00'),
-    Course(
-        day: '30',
-        month: 'Janvier',
-        subject: 'Marketing Concurrentiel',
-        weekDay: 'Jeudi',
-        time: '08:00 - 10:00'),
-    Course(
-        day: '31',
-        month: 'Janvier',
-        subject: 'Marketing Concurrentiel',
-        weekDay: 'Vendredi',
-        time: '11:00 - 13:00'),
-    Course(
-        day: '3',
-        month: 'Février',
-        subject: 'Marketing Concurrentiel',
-        weekDay: 'Lundi',
-        time: '13:00 - 15:00'),
-    Course(
-        day: '10',
-        month: 'Février',
-        subject: 'Marketing Concurrentiel',
-        weekDay: 'Mardi',
-        time: '09:00 - 11:00'),
-    Course(
-        day: '12',
-        month: 'Février',
-        subject: 'Marketing Concurrentiel',
-        weekDay: 'Mercredi',
-        time: '16:00 - 18:00'),
-    Course(
-        day: '15',
-        month: 'Février',
-        subject: 'Marketing Concurrentiel',
-        weekDay: 'Jeudi',
-        time: '12:00 - 14:00'),
-    Course(
-        day: '26',
-        month: 'Février',
-        subject: 'Marketing Concurrentiel',
-        weekDay: 'Vendredi',
-        time: '08:00 - 10:00'),
-  ];
-
   @override
   Widget build(BuildContext context) {
     double hauteurEcran = MediaQuery.of(context).size.height;
@@ -136,8 +73,14 @@ class _Course_screenState extends State<Course_screen> {
                           text: "Marketing strategique",
                           textSize: 15,
                           onTap: () {
-                            if (kDebugMode) {
-                              print("Marketing strategique cliqué !");
+                            if (mounted) {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      HomeWork(courses: marketingStrategique),
+                                ),
+                              );
                             }
                           },
                         ),
@@ -150,8 +93,14 @@ class _Course_screenState extends State<Course_screen> {
                           text: "Negociation",
                           textSize: 15,
                           onTap: () {
-                            if (kDebugMode) {
-                              print("Negociation cliqué !");
+                            if (mounted) {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      HomeWork(courses: negotiation),
+                                ),
+                              );
                             }
                           },
                         ),
@@ -159,8 +108,14 @@ class _Course_screenState extends State<Course_screen> {
                           text: "Comptabilite",
                           textSize: 15,
                           onTap: () {
-                            if (kDebugMode) {
-                              print("Comptabilité cliqué !");
+                            if (mounted) {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      HomeWork(courses: comptabilite),
+                                ),
+                              );
                             }
                           },
                         ),
@@ -173,8 +128,14 @@ class _Course_screenState extends State<Course_screen> {
                           // Utilise une icône
                           text: "Ethique d'entreprise",
                           onTap: () {
-                            if (kDebugMode) {
-                              print("Ethique d'entreprise  cliqué !");
+                            if (mounted) {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      HomeWork(courses: ethiqueEntreprise),
+                                ),
+                              );
                             }
                           },
                         ),
@@ -182,8 +143,14 @@ class _Course_screenState extends State<Course_screen> {
                           text: "Leadership",
                           textSize: 15,
                           onTap: () {
-                            if (kDebugMode) {
-                              print("Leadership cliqué !");
+                            if (mounted) {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      HomeWork(courses: leadership),
+                                ),
+                              );
                             }
                           },
                         ),
@@ -196,8 +163,14 @@ class _Course_screenState extends State<Course_screen> {
                           // Utilise une icône
                           text: "Economie",
                           onTap: () {
-                            if (kDebugMode) {
-                              print("Economie cliqué !");
+                            if (mounted) {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      HomeWork(courses: economie),
+                                ),
+                              );
                             }
                           },
                         ),
@@ -205,8 +178,14 @@ class _Course_screenState extends State<Course_screen> {
                           // Utilise une icône
                           text: "Etrepreneuriat",
                           onTap: () {
-                            if (kDebugMode) {
-                              print("Etrepreneuriat cliqué !");
+                            if (mounted) {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      HomeWork(courses: entrepreneuriat),
+                                ),
+                              );
                             }
                           },
                         ),
@@ -219,8 +198,14 @@ class _Course_screenState extends State<Course_screen> {
                           // Utilise une icône
                           text: "Travail et famille",
                           onTap: () {
-                            if (kDebugMode) {
-                              print("Travail et famille cliqué !");
+                            if (mounted) {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      HomeWork(courses: travailEtFamille),
+                                ),
+                              );
                             }
                           },
                         ),
@@ -229,8 +214,14 @@ class _Course_screenState extends State<Course_screen> {
                           text: "Transformation digitale",
                           textSize: 15,
                           onTap: () {
-                            if (kDebugMode) {
-                              print("Transformation digitale cliqué !");
+                            if (mounted) {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      HomeWork(courses: transformationDigitale),
+                                ),
+                              );
                             }
                           },
                         ),
@@ -244,6 +235,5 @@ class _Course_screenState extends State<Course_screen> {
         ),
       ),
     );
-    ;
   }
 }

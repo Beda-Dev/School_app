@@ -12,49 +12,84 @@ class CalendarScreen extends StatefulWidget {
 }
 
 class _CalendarScreenState extends State<CalendarScreen> {
-  final List<CalendarEventData> cours = [
-    CalendarEventData(
-      title: "Mathématiques",
-      date: DateTime(_now.year, _now.month, _now.day, 13, 30),
-      endDate: DateTime(_now.year, _now.month, _now.day, 18, 00),
-      color: const Color(0xFFE8F5E9),
-    ),
-    CalendarEventData(
-      title: "Programmation",
-      date: DateTime(_now.year, _now.month, _now.day, 09, 30),
-      endDate: DateTime(_now.year, _now.month, _now.day, 13, 30),
-      color: const Color(0xFFFCE4EC),
-    ),
-    CalendarEventData(
-      title: "Algorithmie",
-      date: DateTime(2025, 1, 17, 9, 0),
-      endDate: DateTime(2025, 1, 17, 11, 0),
-      color: const Color(0xFFE3F2FD),
-    ),
-    CalendarEventData(
-      title: "Anglais",
-      date: DateTime(2025, 1, 17, 11, 0),
-      endDate: DateTime(2025, 1, 17, 12, 30),
-      color: const Color(0xFFFFF9C4),
-    ),
-    CalendarEventData(
-      title: "Physique",
-      date: DateTime(2025, 1, 18, 8, 0),
-      endDate: DateTime(2025, 1, 18, 10, 0),
-      color: const Color(0xFFD1C4E9),
-    ),
-  ];
+  // Liste des cours ajoutés au calendrier
+  final List<CalendarEventData> cours = [];
 
-  // Contrôleur des événements pour gérer les données dynamiques
-  late EventController _controller;
+  late EventController _controller; // Contrôleur des événements
+  String vueActuelle = "Mois"; // Vue actuelle (par défaut : Mois)
+
+  void _ajouterTransformationDigitale() {
+    cours.addAll([
+      CalendarEventData(
+        title: "Introduction à la Transformation Digitale",
+        date: DateTime(2025, 2, 1, 9, 0),
+        endDate: DateTime(2025, 2, 1, 11, 0),
+        color: const Color(0xFFBBDEFB),
+      ),
+      CalendarEventData(
+        title: "Technologies Disruptives",
+        date: DateTime(2025, 2, 2, 10, 0),
+        endDate: DateTime(2025, 2, 2, 12, 0),
+        color: const Color(0xFFC8E6C9),
+      ),
+      CalendarEventData(
+        title: "Digitalisation des Processus",
+        date: DateTime(2025, 2, 3, 13, 0),
+        endDate: DateTime(2025, 2, 3, 15, 0),
+        color: const Color(0xFFFFF59D),
+      ),
+      CalendarEventData(
+        title: "Culture Numérique en Entreprise",
+        date: DateTime(2025, 2, 4, 14, 0),
+        endDate: DateTime(2025, 2, 4, 16, 0),
+        color: const Color(0xFFF8BBD0),
+      ),
+      CalendarEventData(
+        title: "Gestion des Données",
+        date: DateTime(2025, 2, 5, 11, 0),
+        endDate: DateTime(2025, 2, 5, 13, 0),
+        color: const Color(0xFF80CBC4),
+      ),
+      CalendarEventData(
+        title: "Cloud Computing et Virtualisation",
+        date: DateTime(2025, 2, 8, 10, 0),
+        endDate: DateTime(2025, 2, 8, 12, 0),
+        color: const Color(0xFFD1C4E9),
+      ),
+      CalendarEventData(
+        title: "Big Data et Analyse Prédictive",
+        date: DateTime(2025, 2, 9, 14, 0),
+        endDate: DateTime(2025, 2, 9, 16, 0),
+        color: const Color(0xFFFFCCBC),
+      ),
+      CalendarEventData(
+        title: "Sécurité et Protection des Données",
+        date: DateTime(2025, 2, 10, 8, 0),
+        endDate: DateTime(2025, 2, 10, 10, 0),
+        color: const Color(0xFFB3E5FC),
+      ),
+      CalendarEventData(
+        title: "Stratégies Digitales",
+        date: DateTime(2025, 2, 11, 9, 0),
+        endDate: DateTime(2025, 2, 11, 11, 0),
+        color: const Color(0xFFA5D6A7),
+      ),
+      CalendarEventData(
+        title: "Impact du Digital sur les Modèles Économiques",
+        date: DateTime(2025, 2, 12, 15, 0),
+        endDate: DateTime(2025, 2, 12, 17, 0),
+        color: const Color(0xFFFFAB91),
+      ),
+    ]);
+  }
 
   @override
   void initState() {
     super.initState();
+    ;
+    _ajouterTransformationDigitale();
     _controller = EventController()..addAll(cours);
   }
-
-  String vueActuelle = "Mois";
 
   @override
   Widget build(BuildContext context) {
@@ -73,7 +108,10 @@ class _CalendarScreenState extends State<CalendarScreen> {
           children: [
             _buildHeader(),
             Expanded(
-              child: _buildVueCalendrier(),
+              child: AnimatedSwitcher(
+                duration: const Duration(milliseconds: 300),
+                child: _buildVueCalendrier(),
+              ),
             ),
           ],
         ),
@@ -81,6 +119,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
     );
   }
 
+  // En-tête avec boutons pour changer de vue
   Widget _buildHeader() {
     return Padding(
       padding: const EdgeInsets.all(16),
@@ -106,6 +145,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
     );
   }
 
+  // Bouton d'en-tête
   Widget _buildHeaderButton(String text, bool estSelectionne) {
     return GestureDetector(
       onTap: () {
@@ -131,14 +171,15 @@ class _CalendarScreenState extends State<CalendarScreen> {
     );
   }
 
+  // Vue du calendrier basée sur la vue sélectionnée
   Widget _buildVueCalendrier() {
     switch (vueActuelle) {
       case "Semaine":
         return WeekView(
           controller: _controller,
-          showLiveTimeLineInAllDays: true,
           eventTileBuilder: _eventTileBuilder,
           timeLineBuilder: _timeLineBuilder,
+          showLiveTimeLineInAllDays: true,
         );
       case "Mois":
         return MonthView(
@@ -155,13 +196,13 @@ class _CalendarScreenState extends State<CalendarScreen> {
           controller: _controller,
           timeLineWidth: 65,
           showLiveTimeLineInAllDays: true,
-          heightPerMinute: 1.0,
           eventTileBuilder: _eventTileBuilder,
           timeLineBuilder: _timeLineBuilder,
         );
     }
   }
 
+  // Widget pour afficher un événement dans le calendrier
   Widget _eventTileBuilder(
     DateTime date,
     List<CalendarEventData> events,
@@ -170,25 +211,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
     DateTime endDuration,
   ) {
     return GestureDetector(
-      onTap: () {
-        // Afficher un dialogue avec les détails de l'événement
-        showDialog(
-          context: context,
-          builder: (context) => AlertDialog(
-            title: Text(events[0].title),
-            content: Text(
-              'Début : ${startDuration.hour.toString().padLeft(2, '0')}:${startDuration.minute.toString().padLeft(2, '0')}\n'
-              'Fin : ${endDuration.hour.toString().padLeft(2, '0')}:${endDuration.minute.toString().padLeft(2, '0')}',
-            ),
-            actions: [
-              TextButton(
-                onPressed: () => Navigator.pop(context),
-                child: const Text('Fermer'),
-              ),
-            ],
-          ),
-        );
-      },
+      onTap: () => _afficherDetailsEvenement(events[0]),
       child: Container(
         decoration: BoxDecoration(
           color: events[0].color,
@@ -203,7 +226,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
                 events[0].title,
                 style: const TextStyle(
                   fontSize: 14,
-                  fontWeight: FontWeight.w500,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
               Text(
@@ -221,6 +244,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
     );
   }
 
+  // Builder pour afficher l'heure sur la timeline
   Widget _timeLineBuilder(DateTime date) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 8),
@@ -234,6 +258,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
     );
   }
 
+  // Afficher les détails de l'événement dans un dialogue
   void _afficherDetailsEvenement(CalendarEventData evenement) {
     showDialog(
       context: context,

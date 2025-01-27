@@ -1,10 +1,6 @@
-import 'package:e_commerce/views/home_screen.dart';
 import 'package:flutter/material.dart';
 import './views/form.dart';
 import 'utils/colors.dart';
-import './views/home_work.dart';
-import './views/calendar.dart';
-import './views/stats_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -28,7 +24,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: AppColors.blue800),
         useMaterial3: true,
       ),
-      home: const HomeScreen(),
+      home: const LoginForm(),
     );
   }
 }

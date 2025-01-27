@@ -8,7 +8,7 @@ class CertificatPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text("Graduation", style: TextStyle(color: Colors.white)),
         backgroundColor:
-            AppColors.blue800, // Changez la couleur de l'AppBar si nécessaire
+            AppColors.blue800,
       ),
       body: Center(
         child: Container(
@@ -31,7 +31,7 @@ class CertificatPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              // Certificat Header
+              
               Text(
                 "Certificat de Graduation",
                 style: TextStyle(
@@ -42,36 +42,35 @@ class CertificatPage extends StatelessWidget {
               ),
               SizedBox(height: 20),
 
-              // Nom du responsable
+              
               Text(
                 "Mr Kouassi Alexandre",
                 style: TextStyle(fontSize: 18),
               ),
               SizedBox(height: 10),
 
-              // Poste ou spécialité
+              
               Text(
                 "Poste : Gestionnaire de compte",
                 style: TextStyle(fontSize: 18),
               ),
               SizedBox(height: 10),
 
-              // Date de délivrance du certificat
+              
               Text(
                 "Date : 12 Janvier 2025",
                 style: TextStyle(fontSize: 18),
               ),
               SizedBox(height: 30),
 
-              // Signature du responsable
+              
               Text(
                 "Signature : Dr. Jean Kouadio",
                 style: TextStyle(fontSize: 18, fontStyle: FontStyle.italic),
               ),
               SizedBox(height: 20),
 
-              // Image de validation (optionnel)
-              // Ici, tu peux ajouter une image comme un sceau de validation ou une signature numérique.
+
             ],
           ),
         ),

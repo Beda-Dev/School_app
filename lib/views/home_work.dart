@@ -24,7 +24,7 @@ class _HomeWorkState extends State<HomeWork> {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         title: const Text(
-          "Cours",
+          "Cours ",
           style: TextStyle(
             color: Colors.white,
           ),

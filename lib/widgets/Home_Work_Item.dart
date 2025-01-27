@@ -42,7 +42,7 @@ class HomeWorkItem extends StatelessWidget {
         padding: const EdgeInsets.all(16.0),
         child: Row(
           children: [
-            // Section Date
+            
             Column(
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -66,9 +66,9 @@ class HomeWorkItem extends StatelessWidget {
               ],
             ),
             const SizedBox(
-                width: 16.0), // Espacement entre la date et le contenu
+                width: 16.0), 
 
-            // Section Contenu principal
+            
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -93,7 +93,7 @@ class HomeWorkItem extends StatelessWidget {
               ),
             ),
 
-            // Section Heure et Actions
+            
             Column(
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
@@ -116,7 +116,7 @@ class HomeWorkItem extends StatelessWidget {
                   ],
                 ),
                 if (showButton)
-                  const SizedBox(height: 8.0), // Espacement pour le bouton
+                  const SizedBox(height: 8.0), 
                 if (showButton)
                   ElevatedButton(
                     onPressed: onNotePressed,

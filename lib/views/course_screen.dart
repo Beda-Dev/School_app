@@ -1,5 +1,3 @@
-import 'package:e_commerce/models/course_model.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import '../utils/colors.dart';
 import '../utils/courses_items.dart';
@@ -175,7 +173,7 @@ class _Course_screenState extends State<Course_screen> {
                           },
                         ),
                         CenteredTextContainer(
-                          // Utilise une icône
+                          
                           text: "Etrepreneuriat",
                           onTap: () {
                             if (mounted) {
@@ -195,7 +193,7 @@ class _Course_screenState extends State<Course_screen> {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         CenteredTextContainer(
-                          // Utilise une icône
+                          
                           text: "Travail et famille",
                           onTap: () {
                             if (mounted) {
@@ -210,7 +208,7 @@ class _Course_screenState extends State<Course_screen> {
                           },
                         ),
                         CenteredTextContainer(
-                          // Utilise une icône
+                          
                           text: "Transformation digitale",
                           textSize: 15,
                           onTap: () {

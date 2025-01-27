@@ -1,4 +1,4 @@
-import 'package:e_commerce/utils/colors.dart';
+import '../utils/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:calendar_view/calendar_view.dart';
 
@@ -119,7 +119,6 @@ class _CalendarScreenState extends State<CalendarScreen> {
     );
   }
 
-  // En-tête avec boutons pour changer de vue
   Widget _buildHeader() {
     return Padding(
       padding: const EdgeInsets.all(16),
@@ -145,7 +144,6 @@ class _CalendarScreenState extends State<CalendarScreen> {
     );
   }
 
-  // Bouton d'en-tête
   Widget _buildHeaderButton(String text, bool estSelectionne) {
     return GestureDetector(
       onTap: () {
@@ -171,7 +169,6 @@ class _CalendarScreenState extends State<CalendarScreen> {
     );
   }
 
-  // Vue du calendrier basée sur la vue sélectionnée
   Widget _buildVueCalendrier() {
     switch (vueActuelle) {
       case "Semaine":
@@ -202,7 +199,6 @@ class _CalendarScreenState extends State<CalendarScreen> {
     }
   }
 
-  // Widget pour afficher un événement dans le calendrier
   Widget _eventTileBuilder(
     DateTime date,
     List<CalendarEventData> events,
@@ -244,7 +240,6 @@ class _CalendarScreenState extends State<CalendarScreen> {
     );
   }
 
-  // Builder pour afficher l'heure sur la timeline
   Widget _timeLineBuilder(DateTime date) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 8),
@@ -258,7 +253,6 @@ class _CalendarScreenState extends State<CalendarScreen> {
     );
   }
 
-  // Afficher les détails de l'événement dans un dialogue
   void _afficherDetailsEvenement(CalendarEventData evenement) {
     showDialog(
       context: context,

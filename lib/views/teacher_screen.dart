@@ -67,37 +67,44 @@ class _TeacherScreenState extends State<TeacherScreen> {
     Teacher(
       name: 'Jacques N’Guessan',
       specialty: 'Marketing Stratégique',
-      photoUrl: 'https://via.placeholder.com/150',
+      photoUrl:
+          'https://images.pexels.com/photos/4098157/pexels-photo-4098157.jpeg',
     ),
     Teacher(
       name: 'Clara Fadiga',
       specialty: 'Négociation',
-      photoUrl: 'https://via.placeholder.com/150',
+      photoUrl:
+          'https://images.pexels.com/photos/4098157/pexels-photo-4098157.jpeg',
     ),
     Teacher(
       name: 'Michel Koné',
       specialty: 'Comptabilité',
-      photoUrl: 'https://via.placeholder.com/150',
+      photoUrl:
+          'https://images.pexels.com/photos/4098157/pexels-photo-4098157.jpeg',
     ),
     Teacher(
       name: 'Lucie Bamba',
       specialty: 'Transformation Digitale',
-      photoUrl: 'https://via.placeholder.com/150',
+      photoUrl:
+          'https://images.pexels.com/photos/4098157/pexels-photo-4098157.jpeg',
     ),
     Teacher(
       name: 'Marc Yao',
       specialty: 'Leadership',
-      photoUrl: 'https://via.placeholder.com/150',
+      photoUrl:
+          'https://images.pexels.com/photos/4098157/pexels-photo-4098157.jpeg',
     ),
     Teacher(
       name: 'Élise Kouakou',
       specialty: 'Économie',
-      photoUrl: 'https://via.placeholder.com/150',
+      photoUrl:
+          'https://images.pexels.com/photos/4098157/pexels-photo-4098157.jpeg',
     ),
     Teacher(
       name: 'Antoine N’Dri',
       specialty: 'Entrepreneuriat',
-      photoUrl: 'https://via.placeholder.com/150',
+      photoUrl:
+          'https://images.pexels.com/photos/4098157/pexels-photo-4098157.jpeg',
     ),
   ];
 

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import '../utils/colors.dart';
 import './home_screen.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 class LoginForm extends StatefulWidget {
   const LoginForm({super.key});
@@ -14,6 +16,7 @@ class _LoginFormState extends State<LoginForm> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   bool _obscureText = true;
+  var url = Uri.https('mde.digifaz.com', '/api/login');
 
   @override
   void dispose() {
@@ -127,18 +130,48 @@ class _LoginFormState extends State<LoginForm> {
                     SizedBox(
                       width: double.infinity,
                       child: ElevatedButton(
-                        onPressed: () {
-                          if (mounted) {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const HomeScreen()),
-                            );
+                        onPressed: () async {
+                          if (mounted && _formKey.currentState!.validate()) {
+                            var response = await http.post(url, body: {
+                              'email': emailController.text,
+                              'password': passwordController.text
+                            });
+                            if (response.statusCode == 200) {
+                              Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const HomeScreen()),
+                              );
+                            } else {
+                              showDialog(
+                                context: context,
+                                builder: (context) {
+                                  return AlertDialog(
+                                    title: const Text(
+                                      "Erreur",
+                                      style: TextStyle(color: Colors.red),
+                                    ),
+                                    content: Column(
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        Text(
+                                          '${jsonDecode(response.body)['message']}',
+                                          style: const TextStyle(fontSize: 16),
+                                        ),
+                                      ],
+                                    ),
+                                    actions: [
+                                      TextButton(
+                                        onPressed: () => Navigator.pop(context),
+                                        child: const Text('Fermer'),
+                                      ),
+                                    ],
+                                  );
+                                },
+                              );
+                            }
                           }
                           ;
-                          if (_formKey.currentState!.validate()) {
-                            // Process login
-                          }
                         },
                         style: ElevatedButton.styleFrom(
                             backgroundColor: AppColors.blue800,
